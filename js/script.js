@@ -15,7 +15,7 @@
 // console.log(typeof(answers));
 // console.log(typeof(null));
 
-const numberOfFilms = prompt('Скільки фільмів ти вже подивився?', '');
+const numberOfFilms = +prompt('Скільки фільмів ти вже подивився?', '');
 
 const personalMovieDB = {
     count: numberOfFilms,
@@ -25,12 +25,28 @@ const personalMovieDB = {
     privat: false
 };
 
-const a = prompt('Один з останніх побачених фільмів?', ''),
-      b = prompt('На скільки його оціниш?', ''),
-      c = prompt('Один з останніх побачених фільмів?', ''),
-      d = prompt('На скільки його оціниш?', '');
+for (let i = 0; i < 2; i++) {
+    const a = prompt('Один з останніх побачених фільмів?', ''),
+          b = prompt('На скільки його оціниш?', '');
 
-personalMovieDB.movies[a] = b;
-personalMovieDB.movies[c] = d;
+    if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+        personalMovieDB.movies[a] = b;
+        console.log("Good");
+    } else {
+        console.log("Йди гуляй");
+        i--;
+    }
+
+}
+
+if (personalMovieDB.count < 10) {
+    console.log("Мало");
+} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+    console.log("Нормально так дивишся");
+} else if (personalMovieDB.count >= 30) {
+    console.log("Ви кіноман!");
+} else {
+    console.log("Помилка");
+}
 
 console.log(personalMovieDB);
